@@ -9,19 +9,21 @@ source:
   sha256: eaa45eec4457f3f865d72a926b7cba86df089410e78de04cd89b15bb405e8fd9
 
 build:
-  number: 39
+  number: 40
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
-    - python >=3.7
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3.7
+    - python >={{ python_min }}
     - numpy
     - setuptools
 test:
+   requires:
+      - python {{ python_min }}
    imports:
      - dijitso
 
